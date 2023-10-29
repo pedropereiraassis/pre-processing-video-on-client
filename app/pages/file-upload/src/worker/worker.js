@@ -19,7 +19,7 @@ const hdConstraints = {
   height: 720
 }
 
-const enconderConfig = {
+const encoderConfig = {
   ...qvgaConstraints,
   bitrate: 10e6,
   // WebM
@@ -36,9 +36,9 @@ const enconderConfig = {
 const webmMWriterConfig = {
   ...qvgaConstraints,
   codec: 'VP9',
-  width: enconderConfig.width,
-  height: enconderConfig.height,
-  bitrate: enconderConfig.bitrate,
+  width: encoderConfig.width,
+  height: encoderConfig.height,
+  bitrate: encoderConfig.bitrate,
 }
 
 const mp4Demuxer = new MP4Demuxer()
@@ -58,7 +58,7 @@ onmessage = async ({ data }) => {
   await videoProcessor.start({
     file: data.file,
     renderFrame,
-    enconderConfig,
+    encoderConfig,
     sendMessage (message) {
       self.postMessage(message)
     } 
