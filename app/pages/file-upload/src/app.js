@@ -35,23 +35,23 @@ view.configureOnFileChange(file => {
     })
 })
 
-async function fakeFetch() {                                                                                                    
-    const filePath = '/videos/frag_bunny.mp4'
-    const response = await fetch(filePath)
+// async function fakeFetch() {                                                                                                    
+//     const filePath = '/videos/frag_bunny.mp4'
+//     const response = await fetch(filePath)
     
-    const file = new File([await response.blob()], filePath, {
-        type: 'video/mp4',
-        lastModified: Date.now(),
-    })
+//     const file = new File([await response.blob()], filePath, {
+//         type: 'video/mp4',
+//         lastModified: Date.now(),
+//     })
 
-    const event = new Event('change')
-    Reflect.defineProperty(
-        event,
-        'target',
-        { value: { files: [file] } },
-    )
+//     const event = new Event('change')
+//     Reflect.defineProperty(
+//         event,
+//         'target',
+//         { value: { files: [file] } },
+//     )
 
-    document.getElementById('fileUpload').dispatchEvent(event)
-}
+//     document.getElementById('fileUpload').dispatchEvent(event)
+// }
 
-fakeFetch()
+// fakeFetch()
